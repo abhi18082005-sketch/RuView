@@ -1,3 +1,4 @@
+// @ts-ignore: suppress missing module/type errors in environments without Playwright installed
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
@@ -13,7 +14,12 @@ export default defineConfig({
     command: 'npm run preview',
     port: 4173,
     timeout: 60_000,
-    reuseExistingServer: !process.env.CI,
+    // ensure a boolean value for reuseExistingServer (CI env vars are strings)
+    reuseExistingServer: Boolean(
+      (globalThis as typeof globalThis & { process?: { env?: { CI?: string } } }).process?.env?.CI,
+    )
+      ? false
+      : true,
   },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },

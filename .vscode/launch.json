@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "QEMU ESP32-S3 Debug",
             "type": "cppdbg",
@@ -28,7 +29,7 @@
             "type": "cppdbg",
             "request": "attach",
             "program": "${workspaceFolder}/firmware/esp32-csi-node/build/esp32-csi-node.elf",
-            "cwd": "${workspaceFolder}/firmware/esp32-csi-node",
+            
             "MIMode": "gdb",
             "miDebuggerPath": "xtensa-esp-elf-gdb",
             "miDebuggerServerAddress": "localhost:1234",
